@@ -1,0 +1,11 @@
+[project]
+entrypoint = "miniprogram"
+requires = ["nodejs-24"]
+
+[dev]
+build = ["cd", "miniprogram", "&&", "pnpm", "install"]
+run = ["cd", "miniprogram", "&&", "pnpm", "run", "build:weapp"]
+
+[deploy]
+build = ["cd", "miniprogram", "&&", "pnpm", "install", "&&", "pnpm", "run", "build:weapp"]
+run = ["cd", "miniprogram", "&&", "pnpm", "run", "build:weapp"]

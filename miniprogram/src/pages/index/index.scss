@@ -1,0 +1,248 @@
+.page {
+  min-height: 100vh;
+  padding-bottom: 200px;
+  background: linear-gradient(180deg, #f8fafc 0%, #eff6ff 100%);
+}
+
+/* 头部 */
+.header {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  padding: 60px 32px 40px;
+  border-radius: 0 0 48px 48px;
+  margin-bottom: 24px;
+}
+
+.header-content {
+  max-width: 686px;
+}
+
+.header-badge {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header-badge-icon {
+  font-size: 48px;
+  margin-right: 12px;
+}
+
+.header-badge-text {
+  font-size: 26px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.header-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.header-subtitle {
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 统计卡片 */
+.stats-grid {
+  display: flex;
+  gap: 16px;
+  padding: 0 32px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  flex: 1;
+  padding: 28px 16px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.stat-card-blue {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0.2) 100%);
+}
+
+.stat-card-violet {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(124, 58, 237, 0.2) 100%);
+}
+
+.stat-card-emerald {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.2) 100%);
+}
+
+.stat-value {
+  font-size: 44px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.stat-card-blue .stat-value {
+  color: #2563eb;
+}
+
+.stat-card-violet .stat-value {
+  color: #7c3aed;
+}
+
+.stat-card-emerald .stat-value {
+  color: #10b981;
+}
+
+.stat-label {
+  display: block;
+  font-size: 22px;
+  color: #64748b;
+  margin-top: 8px;
+}
+
+/* 功能模块 */
+.features {
+  padding: 0 32px;
+}
+
+.feature-card {
+  display: flex;
+  align-items: center;
+  padding: 32px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  transition: all 0.2s;
+}
+
+.feature-card:active {
+  transform: scale(0.98);
+}
+
+.feature-card-violet {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(124, 58, 237, 0.15) 100%);
+}
+
+.feature-card-blue {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(37, 99, 235, 0.15) 100%);
+}
+
+.feature-card-orange {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(249, 115, 22, 0.15) 100%);
+}
+
+.feature-card-emerald {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.15) 100%);
+}
+
+.feature-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24px;
+}
+
+.feature-card-violet .feature-icon {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+}
+
+.feature-card-blue .feature-icon {
+  background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+}
+
+.feature-card-orange .feature-icon {
+  background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.3);
+}
+
+.feature-card-emerald .feature-icon {
+  background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+}
+
+.feature-icon-text {
+  font-size: 48px;
+}
+
+.feature-content {
+  flex: 1;
+}
+
+.feature-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.feature-desc {
+  font-size: 24px;
+  color: #64748b;
+}
+
+.feature-arrow {
+  font-size: 40px;
+  color: #94a3b8;
+}
+
+/* 快速开始 */
+.quick-start {
+  margin: 24px 32px;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.card-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.card-desc {
+  font-size: 26px;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.quick-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+}
+
+.quick-btn:active {
+  background: #f1f5f9;
+}
+
+.quick-btn:last-child {
+  margin-bottom: 0;
+}
+
+.quick-btn-icon {
+  font-size: 32px;
+  margin-right: 12px;
+}
+
+.quick-btn-text {
+  font-size: 28px;
+  color: #1e293b;
+}
+
+/* 底部 */
+.footer {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.footer-text {
+  font-size: 22px;
+  color: #94a3b8;
+}

@@ -1,0 +1,149 @@
+/* 全局样式 */
+page {
+  background: linear-gradient(180deg, #f8fafc 0%, #eff6ff 100%);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', sans-serif;
+}
+
+/* 主题色变量 */
+$primary-color: #2563eb;
+$primary-gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+$secondary-gradient: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
+$success-color: #22c55e;
+$warning-color: #f59e0b;
+$danger-color: #ef4444;
+$text-primary: #1e293b;
+$text-secondary: #64748b;
+$text-muted: #94a3b8;
+$bg-white: #ffffff;
+$bg-gray: #f1f5f9;
+$border-color: #e2e8f0;
+
+/* 通用卡片样式 */
+.card {
+  background: $bg-white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.card-desc {
+  font-size: 24px;
+  color: $text-secondary;
+  margin-top: 4px;
+}
+
+/* 按钮样式 */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88px;
+  border-radius: 12px;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: $primary-gradient;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: $bg-gray;
+  color: $text-primary;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid $border-color;
+  color: $text-primary;
+}
+
+/* 徽章样式 */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.badge-primary {
+  background: rgba(37, 99, 235, 0.1);
+  color: $primary-color;
+}
+
+.badge-success {
+  background: rgba(34, 197, 94, 0.1);
+  color: $success-color;
+}
+
+.badge-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: $warning-color;
+}
+
+/* 输入框样式 */
+.input {
+  width: 100%;
+  min-height: 160px;
+  padding: 20px;
+  border: 2px solid $border-color;
+  border-radius: 12px;
+  font-size: 28px;
+  color: $text-primary;
+  background: $bg-white;
+}
+
+.input:focus {
+  border-color: $primary-color;
+}
+
+/* 进度条样式 */
+.progress {
+  width: 100%;
+  height: 16px;
+  background: $bg-gray;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: $primary-gradient;
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+/* 标签样式 */
+.label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-size: 28px;
+  font-weight: 500;
+  color: $text-primary;
+}
+
+/* 安全区域适配 */
+.safe-area-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
