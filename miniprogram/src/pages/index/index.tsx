@@ -16,14 +16,14 @@ const features = [
   {
     icon: '📅',
     title: '每日复盘',
-    desc: '睡前10分钟，5个核心问题助你成长',
+    desc: '睡前10分钟，核心问题助你成长',
     path: '/pages/daily-review/index',
     color: 'blue'
   },
   {
     icon: '🧠',
     title: '深度复盘',
-    desc: '26问深度剖析，年度自我审视',
+    desc: '深度问题深度剖析，年度自我审视',
     path: '/pages/deep-review/index',
     color: 'orange'
   },

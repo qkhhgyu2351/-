@@ -27,7 +27,7 @@ const features = [
   {
     icon: CalendarDays,
     title: '每日复盘',
-    description: '睡前10分钟，5个核心问题助你成长',
+    description: '睡前10分钟，核心问题助你成长',
     href: '/daily-review',
     color: 'from-blue-500 to-cyan-600',
     bgColor: 'bg-blue-50 dark:bg-blue-950/30',
@@ -35,7 +35,7 @@ const features = [
   {
     icon: Brain,
     title: '深度复盘',
-    description: '26问深度剖析，年度自我审视',
+    description: '深度问题深度剖析，年度自我审视',
     href: '/deep-review',
     color: 'from-orange-500 to-amber-600',
     bgColor: 'bg-orange-50 dark:bg-orange-950/30',
