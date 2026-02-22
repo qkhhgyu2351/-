@@ -1,0 +1,259 @@
+.settings-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 80px;
+}
+
+.header {
+  background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+  padding: 40px 16px 20px;
+  color: white;
+  
+  .header-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .header-subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+  
+  .tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+    
+    &.tab-active {
+      border-color: #3b82f6;
+      background: #eff6ff;
+    }
+    
+    .tab-icon {
+      font-size: 16px;
+    }
+    
+    .tab-text {
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}
+
+.reset-btn {
+  margin: 0 16px 16px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  text-align: center;
+  
+  .reset-btn-text {
+    font-size: 14px;
+    color: #64748b;
+  }
+}
+
+.content {
+  padding: 0 16px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1e293b;
+}
+
+.question-card {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  
+  &.new-question {
+    border: 2px dashed #3b82f6;
+    background: #eff6ff;
+  }
+}
+
+.question-content {
+  position: relative;
+  
+  .question-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  
+  .question-text {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1e293b;
+    margin-bottom: 8px;
+  }
+  
+  .question-placeholder {
+    display: block;
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 12px;
+  }
+  
+  .question-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+}
+
+.category-card {
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  
+  &.new-category {
+    border: 2px dashed #8b5cf6;
+    background: #f5f3ff;
+  }
+}
+
+.category-header {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafc;
+  
+  .category-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .category-toggle {
+    font-size: 12px;
+    color: #64748b;
+  }
+  
+  .category-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #1e293b;
+  }
+  
+  .category-count {
+    font-size: 12px;
+    color: #64748b;
+    background: #e2e8f0;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+}
+
+.category-content {
+  padding: 12px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  
+  .form-label {
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.action-btn {
+  padding: 6px 12px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  font-size: 14px;
+  
+  &.delete {
+    color: #ef4444;
+  }
+}
+
+.add-btn {
+  padding: 14px;
+  background: white;
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 8px;
+  
+  &.small {
+    margin-top: 12px;
+  }
+  
+  .add-btn-text {
+    font-size: 14px;
+    color: #64748b;
+  }
+}
+
+// 模拟 Input 和 Textarea 组件
+Input, Textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  min-height: 80px;
+  box-sizing: border-box;
+}
+
+Input {
+  min-height: auto;
+}
+
+Button {
+  flex: 1;
+  padding: 10px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  
+  &:not(:last-child) {
+    background: #64748b;
+  }
+}

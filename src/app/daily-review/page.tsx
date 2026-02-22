@@ -20,65 +20,39 @@ import {
   Heart,
   Lightbulb,
 } from 'lucide-react';
+import { DEFAULT_DAILY_QUESTIONS, type DailyQuestionConfig } from '@/lib/question-config';
 
 interface DailyRecord {
   id: string;
   date: string;
-  answers: {
-    valuable: string; // 今天做了什么有价值的事
-    learned: string; // 今天学到了什么新东西
-    mistakes: string; // 今天犯了什么错误
-    emotions: string; // 今天有什么较大的情绪波动
-    opportunities: string; // 今天遇到了什么机会
-  };
+  answers: Record<string, string>;
   createdAt: string;
 }
 
-const questions = [
-  {
-    key: 'valuable',
-    question: '今天做了什么有价值的事？',
-    placeholder: '记录今天完成的重要工作、帮助他人的事、或任何让你感到有意义的行动...',
-    icon: BookOpen,
-    color: 'from-blue-500 to-cyan-500',
-    bgColor: 'bg-blue-50 dark:bg-blue-950/30',
-  },
-  {
-    key: 'learned',
-    question: '今天学到了什么新东西？',
-    placeholder: '新知识、新技能、新感悟，或者从错误中获得的教训...',
-    icon: Lightbulb,
-    color: 'from-violet-500 to-purple-500',
-    bgColor: 'bg-violet-50 dark:bg-violet-950/30',
-  },
-  {
-    key: 'mistakes',
-    question: '今天犯了什么错误？',
-    placeholder: '诚实地记录错误，这是成长的机会。不要责备自己，而是思考如何改进...',
-    icon: AlertCircle,
-    color: 'from-orange-500 to-amber-500',
-    bgColor: 'bg-orange-50 dark:bg-orange-950/30',
-  },
-  {
-    key: 'emotions',
-    question: '今天有什么较大的情绪波动？',
-    placeholder: '什么触发了你的情绪？开心、焦虑、愤怒还是平静？为什么？',
-    icon: Heart,
-    color: 'from-pink-500 to-rose-500',
-    bgColor: 'bg-pink-50 dark:bg-pink-950/30',
-  },
-  {
-    key: 'opportunities',
-    question: '今天遇到了什么机会？',
-    placeholder: '可能是新的合作、学习机会、或者一个有趣的想法...',
-    icon: Sparkles,
-    color: 'from-emerald-500 to-teal-500',
-    bgColor: 'bg-emerald-50 dark:bg-emerald-950/30',
-  },
+// 图标映射
+const iconMap = {
+  BookOpen,
+  Lightbulb,
+  AlertCircle,
+  Heart,
+  Sparkles,
+};
+
+// 颜色配置
+const colorConfigs = [
+  { color: 'from-blue-500 to-cyan-500', bgColor: 'bg-blue-50 dark:bg-blue-950/30' },
+  { color: 'from-violet-500 to-purple-500', bgColor: 'bg-violet-50 dark:bg-violet-950/30' },
+  { color: 'from-orange-500 to-amber-500', bgColor: 'bg-orange-50 dark:bg-orange-950/30' },
+  { color: 'from-pink-500 to-rose-500', bgColor: 'bg-pink-50 dark:bg-pink-950/30' },
+  { color: 'from-emerald-500 to-teal-500', bgColor: 'bg-emerald-50 dark:bg-emerald-950/30' },
+  { color: 'from-sky-500 to-blue-500', bgColor: 'bg-sky-50 dark:bg-sky-950/30' },
+  { color: 'from-indigo-500 to-violet-500', bgColor: 'bg-indigo-50 dark:bg-indigo-950/30' },
+  { color: 'from-teal-500 to-emerald-500', bgColor: 'bg-teal-50 dark:bg-teal-950/30' },
 ];
 
 export default function DailyReviewPage() {
   const [records, setRecords] = useLocalStorage<DailyRecord[]>('daily-review', []);
+  const [dailyQuestionConfig] = useLocalStorage<DailyQuestionConfig[]>('daily-questions-config', DEFAULT_DAILY_QUESTIONS);
   const [selectedDate, setSelectedDate] = useState(getTodayString());
   const [showHistory, setShowHistory] = useState(false);
 
@@ -86,13 +60,16 @@ export default function DailyReviewPage() {
     return records.find((r) => r.date === selectedDate);
   }, [records, selectedDate]);
 
-  const [answers, setAnswers] = useState({
-    valuable: todayRecord?.answers.valuable || '',
-    learned: todayRecord?.answers.learned || '',
-    mistakes: todayRecord?.answers.mistakes || '',
-    emotions: todayRecord?.answers.emotions || '',
-    opportunities: todayRecord?.answers.opportunities || '',
-  });
+  // 从配置动态生成答案状态
+  const initialAnswers = useMemo(() => {
+    const ans: Record<string, string> = {};
+    dailyQuestionConfig.forEach(q => {
+      ans[q.key] = todayRecord?.answers[q.key] || '';
+    });
+    return ans;
+  }, [todayRecord, dailyQuestionConfig]);
+
+  const [answers, setAnswers] = useState<Record<string, string>>(initialAnswers);
 
   // 计算连续天数
   const streak = useMemo(() => {
@@ -142,13 +119,12 @@ export default function DailyReviewPage() {
     if (record) {
       setAnswers(record.answers);
     } else {
-      setAnswers({
-        valuable: '',
-        learned: '',
-        mistakes: '',
-        emotions: '',
-        opportunities: '',
+      // 重置为空的答案对象
+      const emptyAnswers: Record<string, string> = {};
+      dailyQuestionConfig.forEach(q => {
+        emptyAnswers[q.key] = '';
       });
+      setAnswers(emptyAnswers);
     }
   };
 
@@ -164,7 +140,7 @@ export default function DailyReviewPage() {
             每日复盘
           </h1>
           <p className="text-blue-100 text-sm mt-1">
-            睡前10分钟，5个核心问题助你成长
+            睡前10分钟，核心问题助你成长
           </p>
         </div>
       </header>
@@ -237,27 +213,34 @@ export default function DailyReviewPage() {
             </CardDescription>
           </CardHeader>
           <CardContent className="p-4 space-y-4">
-            {questions.map((q, index) => (
-              <div key={q.key} className="space-y-2">
-                <Label className={`flex items-center gap-2 p-2 rounded-lg ${q.bgColor}`}>
-                  <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${q.color} flex items-center justify-center`}>
-                    <q.icon className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="font-medium text-slate-700 dark:text-slate-300">
-                    {index + 1}. {q.question}
-                  </span>
-                </Label>
-                <Textarea
-                  placeholder={q.placeholder}
-                  value={answers[q.key as keyof typeof answers]}
-                  onChange={(e) =>
-                    setAnswers({ ...answers, [q.key]: e.target.value })
-                  }
-                  rows={3}
-                  className="resize-none"
-                />
-              </div>
-            ))}
+            {dailyQuestionConfig.map((q, index) => {
+              // 循环使用图标和颜色配置
+              const iconKey = Object.keys(iconMap)[index % Object.keys(iconMap).length] as keyof typeof iconMap;
+              const IconComponent = iconMap[iconKey];
+              const colorConfig = colorConfigs[index % colorConfigs.length];
+
+              return (
+                <div key={q.key} className="space-y-2">
+                  <Label className={`flex items-center gap-2 p-2 rounded-lg ${colorConfig.bgColor}`}>
+                    <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${colorConfig.color} flex items-center justify-center`}>
+                      <IconComponent className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="font-medium text-slate-700 dark:text-slate-300">
+                      {index + 1}. {q.question}
+                    </span>
+                  </Label>
+                  <Textarea
+                    placeholder={q.placeholder}
+                    value={answers[q.key] || ''}
+                    onChange={(e) =>
+                      setAnswers({ ...answers, [q.key]: e.target.value })
+                    }
+                    rows={3}
+                    className="resize-none"
+                  />
+                </div>
+              );
+            })}
           </CardContent>
         </Card>
 

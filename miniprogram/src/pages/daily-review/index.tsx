@@ -2,74 +2,33 @@ import { View, Text, Textarea, ScrollView } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { useState, useEffect, useMemo } from 'react'
 import { storage, formatDate, getTodayString, calculateStreak } from '../../utils/storage'
+import { DEFAULT_DAILY_QUESTIONS, type DailyQuestionConfig } from '../../utils/question-config'
 import './index.scss'
-
-// 5个核心问题
-const questions = [
-  {
-    key: 'valuable',
-    question: '今天做了什么有价值的事？',
-    placeholder: '记录今天完成的重要工作、帮助他人的事、或任何让你感到有意义的行动...',
-    icon: '📚',
-    color: 'blue'
-  },
-  {
-    key: 'learned',
-    question: '今天学到了什么新东西？',
-    placeholder: '新知识、新技能、新感悟，或者从错误中获得的教训...',
-    icon: '💡',
-    color: 'violet'
-  },
-  {
-    key: 'mistakes',
-    question: '今天犯了什么错误？',
-    placeholder: '诚实地记录错误，这是成长的机会。不要责备自己，而是思考如何改进...',
-    icon: '⚠️',
-    color: 'orange'
-  },
-  {
-    key: 'emotions',
-    question: '今天有什么较大的情绪波动？',
-    placeholder: '什么触发了你的情绪？开心、焦虑、愤怒还是平静？为什么？',
-    icon: '❤️',
-    color: 'pink'
-  },
-  {
-    key: 'opportunities',
-    question: '今天遇到了什么机会？',
-    placeholder: '可能是新的合作、学习机会、或者一个有趣的想法...',
-    icon: '✨',
-    color: 'emerald'
-  }
-]
 
 interface DailyRecord {
   id: string
   date: string
-  answers: {
-    valuable: string
-    learned: string
-    mistakes: string
-    emotions: string
-    opportunities: string
-  }
+  answers: Record<string, string>
   createdAt: string
 }
 
+// 图标和颜色配置
+const iconConfig = ['📚', '💡', '⚠️', '❤️', '✨', '🎯', '🔥', '💪']
+const colorConfig = ['blue', 'violet', 'orange', 'pink', 'emerald', 'sky', 'indigo', 'teal']
+
 export default function DailyReview() {
   const [records, setRecords] = useState<DailyRecord[]>([])
+  const [dailyQuestionConfig, setDailyQuestionConfig] = useState<DailyQuestionConfig[]>(DEFAULT_DAILY_QUESTIONS)
   const [selectedDate, setSelectedDate] = useState(getTodayString())
-  const [answers, setAnswers] = useState({
-    valuable: '',
-    learned: '',
-    mistakes: '',
-    emotions: '',
-    opportunities: ''
-  })
+  const [answers, setAnswers] = useState<Record<string, string>>({})
 
   useEffect(() => {
     const savedRecords = storage.get<DailyRecord[]>('daily-review') || []
+    const savedConfig = storage.get<DailyQuestionConfig[]>('daily-questions-config')
     setRecords(savedRecords)
+    if (savedConfig) {
+      setDailyQuestionConfig(savedConfig)
+    }
   }, [])
 
   // 当前日期的记录
@@ -81,15 +40,14 @@ export default function DailyReview() {
     if (currentRecord) {
       setAnswers(currentRecord.answers)
     } else {
-      setAnswers({
-        valuable: '',
-        learned: '',
-        mistakes: '',
-        emotions: '',
-        opportunities: ''
+      // 初始化空的答案对象
+      const emptyAnswers: Record<string, string> = {}
+      dailyQuestionConfig.forEach(q => {
+        emptyAnswers[q.key] = ''
       })
+      setAnswers(emptyAnswers)
     }
-  }, [currentRecord])
+  }, [currentRecord, dailyQuestionConfig])
 
   // 统计数据
   const stats = useMemo(() => {
@@ -199,24 +157,29 @@ export default function DailyReview() {
           </View>
 
           <View className='questions-list'>
-            {questions.map((q, index) => (
-              <View key={q.key} className='question-item'>
-                <View className={`question-label question-label-${q.color}`}>
-                  <View className={`question-icon question-icon-${q.color}`}>
-                    <Text className='icon-text'>{q.icon}</Text>
+            {dailyQuestionConfig.map((q, index) => {
+              const icon = iconConfig[index % iconConfig.length]
+              const color = colorConfig[index % colorConfig.length]
+              
+              return (
+                <View key={q.key} className='question-item'>
+                  <View className={`question-label question-label-${color}`}>
+                    <View className={`question-icon question-icon-${color}`}>
+                      <Text className='icon-text'>{icon}</Text>
+                    </View>
+                    <Text className='question-text'>
+                      {index + 1}. {q.question}
+                    </Text>
                   </View>
-                  <Text className='question-text'>
-                    {index + 1}. {q.question}
-                  </Text>
+                  <Textarea
+                    className='question-textarea'
+                    placeholder={q.placeholder}
+                    value={answers[q.key] || ''}
+                    onInput={(e) => updateAnswer(q.key, e.detail.value)}
+                  />
                 </View>
-                <Textarea
-                  className='question-textarea'
-                  placeholder={q.placeholder}
-                  value={answers[q.key as keyof typeof answers] || ''}
-                  onInput={(e) => updateAnswer(q.key, e.detail.value)}
-                />
-              </View>
-            ))}
+              )
+            })}
           </View>
         </View>
 
