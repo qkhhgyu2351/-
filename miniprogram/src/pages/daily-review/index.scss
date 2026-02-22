@@ -336,3 +336,48 @@
   font-size: 24px;
   color: #94a3b8;
 }
+
+/* 提示横幅 */
+.tip-banner {
+  margin: 0 24px 24px;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.tip-banner-blue {
+  background: rgba(37, 99, 235, 0.08);
+  border: 2px solid rgba(37, 99, 235, 0.2);
+}
+
+.tip-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tip-icon {
+  font-size: 32px;
+}
+
+.tip-text {
+  flex: 1;
+  font-size: 26px;
+  color: #1e293b;
+}
+
+.tip-btn {
+  padding: 12px 24px;
+  background: rgba(37, 99, 235, 0.1);
+  border-radius: 12px;
+}
+
+.tip-btn-text {
+  font-size: 24px;
+  color: #2563eb;
+  font-weight: 500;
+}

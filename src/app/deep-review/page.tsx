@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
@@ -158,6 +159,25 @@ export default function DeepReviewPage() {
               <Sparkles className="w-5 h-5 mr-2" />
               开始新的深度复盘
             </Button>
+
+            {/* 提示横幅 */}
+            <Card className="bg-orange-50 dark:bg-orange-950/30 border-orange-200 dark:border-orange-800">
+              <CardContent className="p-4 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <Sparkles className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                  <div className="flex-1">
+                    <p className="text-sm text-slate-700 dark:text-slate-300">
+                      💡 你可以在「设置」中自定义这些问题
+                    </p>
+                  </div>
+                </div>
+                <Link href="/settings">
+                  <Button size="sm" variant="ghost" className="text-orange-600 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-orange-900">
+                    前往
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
 
             {records.length > 0 && (
               <Card className="border-0 shadow-sm">

@@ -3,14 +3,15 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { 
-  CalendarDays, 
-  Target, 
-  Brain, 
-  TrendingUp, 
+import {
+  CalendarDays,
+  Target,
+  Brain,
+  TrendingUp,
   ChevronRight,
   Sparkles,
-  CheckCircle2
+  CheckCircle2,
+  Settings
 } from 'lucide-react';
 import { BottomNav } from '@/components/bottom-nav';
 import { useLocalStorage } from '@/hooks/use-local-storage';
@@ -148,6 +149,12 @@ export default function Home() {
                 </Button>
               </Link>
             )}
+            <Link href="/settings">
+              <Button className="w-full justify-start gap-2" variant="outline">
+                <Settings className="w-4 h-4 text-slate-500" />
+                自定义复盘问题
+              </Button>
+            </Link>
           </CardContent>
         </Card>
       </main>
