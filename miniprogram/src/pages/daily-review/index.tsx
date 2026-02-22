@@ -149,17 +149,6 @@ export default function DailyReview() {
       </View>
 
       <ScrollView scrollY className='content'>
-        {/* 提示横幅 */}
-        <View className='tip-banner tip-banner-blue'>
-          <View className='tip-content'>
-            <Text className='tip-icon'>✨</Text>
-            <Text className='tip-text'>可在「设置」中自定义问题</Text>
-          </View>
-          <View className='tip-btn' onClick={() => Taro.navigateTo({ url: '/pages/settings/index' })}>
-            <Text className='tip-btn-text'>前往</Text>
-          </View>
-        </View>
-
         {/* 问题表单 */}
         <View className='questions-card'>
           <View className='questions-header'>

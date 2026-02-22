@@ -164,17 +164,6 @@ export default function DeepReview() {
             <Text className='new-btn-text'>开始新的深度复盘</Text>
           </View>
 
-          {/* 提示横幅 */}
-          <View className='tip-banner tip-banner-orange'>
-            <View className='tip-content'>
-              <Text className='tip-icon'>✨</Text>
-              <Text className='tip-text'>可在「设置」中自定义问题</Text>
-            </View>
-            <View className='tip-btn' onClick={() => Taro.navigateTo({ url: '/pages/settings/index' })}>
-              <Text className='tip-btn-text'>前往</Text>
-            </View>
-          </View>
-
           {records.length > 0 && (
             <View className='history-card'>
               <Text className='history-title'>历史记录</Text>
