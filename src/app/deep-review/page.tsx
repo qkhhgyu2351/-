@@ -162,17 +162,15 @@ export default function DeepReviewPage() {
 
             {/* 提示横幅 */}
             <Card className="bg-orange-50 dark:bg-orange-950/30 border-orange-200 dark:border-orange-800">
-              <CardContent className="p-4 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Sparkles className="w-5 h-5 text-orange-600 dark:text-orange-400" />
-                  <div className="flex-1">
-                    <p className="text-sm text-slate-700 dark:text-slate-300">
-                      💡 你可以在「设置」中自定义这些问题
-                    </p>
-                  </div>
+              <CardContent className="p-1.5 flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <Sparkles className="w-3 h-3 text-orange-600 dark:text-orange-400" />
+                  <p className="text-xs text-slate-700 dark:text-slate-300">
+                    可在「设置」中自定义问题
+                  </p>
                 </div>
                 <Link href="/settings">
-                  <Button size="sm" variant="ghost" className="text-orange-600 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-orange-900">
+                  <Button size="sm" variant="ghost" className="h-6 px-2 text-xs text-orange-600 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-orange-900">
                     前往
                   </Button>
                 </Link>
