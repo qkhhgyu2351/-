@@ -33,6 +33,13 @@ const features = [
     desc: '可视化进度，见证每一步成长',
     path: '/pages/tracking/index',
     color: 'emerald'
+  },
+  {
+    icon: '⚙️',
+    title: '问题设置',
+    desc: '自定义复盘问题，打造专属成长方案',
+    path: '/pages/settings/index',
+    color: 'slate'
   }
 ]
 

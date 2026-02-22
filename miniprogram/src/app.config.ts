@@ -5,6 +5,7 @@ export default defineAppConfig({
     'pages/daily-review/index',
     'pages/deep-review/index',
     'pages/tracking/index',
+    'pages/settings/index',
   ],
   window: {
     backgroundTextStyle: 'light',

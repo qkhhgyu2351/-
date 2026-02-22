@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { CalendarDays, ClipboardList, Home, Target, Brain } from 'lucide-react';
+import { CalendarDays, ClipboardList, Home, Target, Brain, Settings } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -10,6 +10,7 @@ const navItems = [
   { icon: CalendarDays, label: '每日复盘', path: '/daily-review' },
   { icon: Brain, label: '深度复盘', path: '/deep-review' },
   { icon: ClipboardList, label: '追踪', path: '/tracking' },
+  { icon: Settings, label: '设置', path: '/settings' },
 ];
 
 export function BottomNav() {
